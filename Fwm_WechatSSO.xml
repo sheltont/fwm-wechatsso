@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Fwm_WechatSSO>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Fwm_WechatSSO>
+    </modules>
+</config> 

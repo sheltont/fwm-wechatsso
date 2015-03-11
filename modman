@@ -1,0 +1,7 @@
+# Code
+code/WechatSSO                      app/code/local/Fwm/WechatSSO
+
+# Design
+# Skin
+
+Fwm_WechatSSO.xml               app/etc/modules/Fwm_WechatSSO.xml

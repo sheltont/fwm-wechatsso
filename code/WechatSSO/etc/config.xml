@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Fwm_WechatSSO>
+             <version>1.0.0</version>
+        </Fwm_WechatSSO>
+    </modules>
+    
+    <global>
+        <models>
+            <Fwm_WechatSSO>
+                <class>Fwm_WechatSSO_Model</class>
+            </Fwm_WechatSSO>
+        </models>
+		<blocks>
+			<Fwm_WechatSSO>
+                <class>Fwm_WechatSSO_Block</class>
+            </Fwm_WechatSSO>
+        </blocks>
+        <helpers>
+			<Fwm_WechatSSO>
+                <class>Fwm_WechatSSO_Helper</class>
+            </Fwm_WechatSSO>
+        </helpers>
+    </global>
+    
+    <frontend>
+		<routers>
+            <Fwm_WechatSSO>
+                <use>standard</use>
+                <args>
+                    <module>Fwm_WechatSSO</module>
+                    <frontName>wechatsso</frontName>
+                </args>
+            </Fwm_WechatSSO>
+        </routers>
+		<layout>
+            <updates>
+                <Fwm_WechatSSO module="Fwm_WechatSSO">
+                    <file>fwm/wechatsso.xml</file>
+                </Fwm_WechatSSO>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Fwm_WechatSSO>
+                    <files>
+                        <default>Fwm_WechatSSO.csv</default>
+                    </files>
+                </Fwm_WechatSSO>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <adminhtml>
+        <translate>
+            <modules>
+                <Fwm_WechatSSO>
+                    <files>
+                        <default>Fwm_WechatSSO.csv</default>
+                    </files>
+                </Fwm_WechatSSO>
+            </modules>
+        </translate>    
+    </adminhtml>
+</config>
