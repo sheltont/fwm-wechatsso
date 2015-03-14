@@ -1,0 +1,24 @@
+<?php
+/**
+ * @category    Fwm
+ * @package     Fwm_WechatSSO
+ * @author      Shelton Tang <shelton.ms@gmail.com>
+ * @copyright   Binqsoft (http://binqsoft.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<div id="wechatsso-root"></div>
+<script type="text/javascript">
+    <?php
+        if ($this->isWechatClient() && !$this->isLoggedIn())
+        {
+            $from = Mage::app()->getRequest()->getRequestUri();
+            $url = Zend_Uri_Http::fromString($this->getConnectUrl());
+            $url->addReplaceQueryParameters(array("from" => urlencode($from)));
+
+           echo 'window.location.href = \'' . $url->getUri() . '\';';
+        }
+    ?>
+
+    //]]>
+</script>

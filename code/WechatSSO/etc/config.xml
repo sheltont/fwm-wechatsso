@@ -9,37 +9,48 @@
     
     <global>
         <models>
-            <Fwm_WechatSSO>
+            <fwm_wechatsso>
                 <class>Fwm_WechatSSO_Model</class>
-            </Fwm_WechatSSO>
+            </fwm_wechatsso>
         </models>
+        <resources>
+            <fwm_wechatsso_setup>
+                <setup>
+                    <module>Fwm_WechatSSO</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </fwm_wechatsso_setup>
+        </resources>
 		<blocks>
-			<Fwm_WechatSSO>
+			<fwm_wechatsso>
                 <class>Fwm_WechatSSO_Block</class>
-            </Fwm_WechatSSO>
+            </fwm_wechatsso>
         </blocks>
         <helpers>
-			<Fwm_WechatSSO>
+			<fwm_wechatsso>
                 <class>Fwm_WechatSSO_Helper</class>
-            </Fwm_WechatSSO>
+            </fwm_wechatsso>
         </helpers>
     </global>
     
     <frontend>
 		<routers>
-            <Fwm_WechatSSO>
+            <fwm_wechatsso>
                 <use>standard</use>
                 <args>
                     <module>Fwm_WechatSSO</module>
-                    <frontName>wechatsso</frontName>
+                    <frontName>fwm_wechatsso</frontName>
                 </args>
-            </Fwm_WechatSSO>
+            </fwm_wechatsso>
         </routers>
 		<layout>
             <updates>
-                <Fwm_WechatSSO module="Fwm_WechatSSO">
+                <fwm_wechatsso module="Fwm_WechatSSO">
                     <file>fwm/wechatsso.xml</file>
-                </Fwm_WechatSSO>
+                </fwm_wechatsso>
             </updates>
         </layout>
         <translate>

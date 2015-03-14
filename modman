@@ -2,6 +2,14 @@
 code/WechatSSO                      app/code/local/Fwm/WechatSSO
 
 # Design
+
+# Layout
+design/frontend/default/default/layout/fwm   app/design/frontend/base/default/layout/fwm
+
+# Template
+design/frontend/default/default/template/fwm   app/design/frontend/base/default/template/fwm
+
+
 # Skin
 
 Fwm_WechatSSO.xml               app/etc/modules/Fwm_WechatSSO.xml

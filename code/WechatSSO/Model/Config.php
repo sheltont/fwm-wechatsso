@@ -10,56 +10,29 @@
  */
 class Fwm_WechatSSO_Model_Config extends Mage_Core_Model_Abstract
 {
-    public function __construct()
-    {
-        $this->_init('fwm_wechatsso/config');
-        parent::_construct();
-    }
-
-    public function isEnabled($storeId = null)
-    {
-        return true;
-    }
-
-    public function isValidAppId($appId)
-    {
-        return true;
-    }
-
-    public function getAppId($storeId = null)
-    {
-        return "wxdfb9245f80ddf4a1";
-    }
-
-    public function getScope($storeId = null)
-    {
-        return "snsapi_login";
-    }
-
-    /**
-	const XML_PATH_ENABLED = 'customer/wechatsso/enabled';
-	const XML_PATH_API_ID = 'customer/wechatsso/api_id';
+    const XML_PATH_ENABLED = 'customer/wechatsso/enabled';
+    const XML_PATH_APP_ID = 'customer/wechatsso/app_id';
+    const XML_PATH_SECRET = 'customer/wechatsso/secret';
 
     public function isEnabled($storeId=null)
     {
-		if( Mage::getStoreConfigFlag(self::XML_PATH_ENABLED, $storeId) && 
-			$this->getApiKey($storeId) && 
-			$this->getSecret($storeId))
-		{
-        	return true;
+        if( Mage::getStoreConfigFlag(self::XML_PATH_ENABLED, $storeId) &&
+            $this->getAppId($storeId) &&
+            $this->getSecret($storeId))
+        {
+            return true;
         }
-        
+
         return false;
     }
-	
-    public function getApiId($storeId=null)
+    public function getAppId($storeId=null)
     {
-    	return trim(Mage::getStoreConfig(self::XML_PATH_API_ID, $storeId));
+        return trim(Mage::getStoreConfig(self::XML_PATH_APP_ID, $storeId));
     }
-    
-    public function getScope($storeId=null)
+
+    public function getSecret($storeId=null)
     {
-        return trim(Mage::getStoreConfig(self::XML_PATH_SCOPE, $storeId));
+        return trim(Mage::getStoreConfig(self::XML_PATH_SECRET, $storeId));
     }
-    */
+
 }

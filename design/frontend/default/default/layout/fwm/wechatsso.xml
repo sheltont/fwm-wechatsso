@@ -11,16 +11,21 @@
 
     <default>
         <reference name="after_body_start">
-            <block type="inchoo_facebook/template" template="inchoo/facebook/init.phtml" name="inchoo_facebook_init" />
+            <block type="fwm_wechatsso/init" template="fwm/wechatsso/init.phtml" name="fwm_wechatsso_init" />
         </reference>
         <reference name="top.links">
-            <action method="addLink" translate="label title" module="inchoo_facebook" ifconfig="customer/facebook/enabled"><label>Connect with Facebook</label><url helper="inchoo_facebook/getConnectUrl"/><title>Facebook Connect</title><prepare/><urlParams/><position>110</position><liParams/><aParams><rel>facebook-connect</rel></aParams></action>
-        </reference>
-    </default>
-
-    <default>
-        <reference name="content">
-            <block type="Fwm_WechatSSO/login" template="fwm/wechatsso/login.phtml" name="fwm_wechatsso_login" />
+            <action method="addLink" translate="label title" module="fwm_wechatsso" ifconfig="customer/wechatsso/enabled">
+                <label>微信登录</label>
+                <url helper="fwm_wechatsso/getConnectUrl"/>
+                <title>微信登录</title>
+                <prepare/>
+                <urlParams/>
+                <position>120</position>
+                <liParams/>
+                <aParams>
+                    <rel>wechat-sso</rel>
+                </aParams>
+            </action>
         </reference>
     </default>
 

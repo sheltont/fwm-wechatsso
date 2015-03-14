@@ -11,26 +11,16 @@
 class Fwm_WechatSSO_Model_Session extends Varien_Object
 {
 	private $_client;
-	private $_payload;
-	private $_signature;
 
 	public function __construct()
 	{
-		if($this->getCookie()) {
-			list($encodedSignature, $payload) = explode('.', $this->getCookie(), 2);
-			
-    		//decode data
-			$signature = base64_decode(strtr($encodedSignature, '-_', '+/'));
-    		$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
-    		
-    		$this->setData($data);
-    		
-    		//compatibility hack
-    		$this->setUid((string)$this->getUserId());
-    		
-    		$this->_signature = $signature;
-    		$this->_payload = $payload;
-		}
+        $data =  Mage::app()->getRequest()->getParams();
+
+        if (!isset($data['code']) || !isset($data['state'])) {
+            Mage::log("The callback url is invalid since no code or state", null, "wechatsso.log");
+            return;
+        }
+        $this->setData($data);
 	}
 	
 	public function isConnected()
@@ -43,26 +33,20 @@ class Fwm_WechatSSO_Model_Session extends Varien_Object
     	if(!$this->hasData()) {
     		return false;
     	}
-    	
-		$expectedSignature = hash_hmac('sha256', $this->_payload, Mage::getSingleton('inchoo_facebook/config')->getSecret(), true);
-		return ($expectedSignature==$this->_signature);
+    	return true;
     }
-     
-    public function getCookie()
-    {
-    	return Mage::app()->getRequest()->getCookie('fbsr_'.Mage::getSingleton('inchoo_facebook/config')->getApiKey(), false);
-    }
+
 	     
 	public function getClient()
 	{
 		if(is_null($this->_client)) {
-			$this->_client = Mage::getModel('inchoo_facebook/client',array(
-									Mage::getSingleton('inchoo_facebook/config')->getApiKey(),
-									Mage::getSingleton('inchoo_facebook/config')->getSecret(),
+			$this->_client = Mage::getModel('fwm_wechatsso/client',array(
+									Mage::getSingleton('fwm_wechatsso/config')->getAppId(),
+									Mage::getSingleton('fwm_wechatsso/config')->getSecret(),
+                                    $this->getData('code'),
 									$this
 							));
 		}
 		return $this->_client;
 	}
-	
 }
